@@ -1,0 +1,14 @@
+<table>
+    <tr>
+        <th></th>
+        <th>Mean</th>
+        <th>Median</th>
+        <th>STD</th>
+    </tr>
+    <tr ng-repeat="(key, value) in sd.stats"> 
+        <th class="left-align">{{value.name}}</th>
+        <td>{{value.Mean | number : 2}}</td>
+        <td>{{value.Median | number : 2}}</td>
+        <td>{{value.Std | number : 2}}</td>
+    </tr>
+</table>

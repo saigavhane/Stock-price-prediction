@@ -1,0 +1,42 @@
+
+{% extends 'layout.html' %}
+{% block page_title %}Select Stock Symbols{% endblock %}
+{% block title %}Stock Price Predictor{% endblock %}
+
+{% block content %}
+<section id="symbol-selector">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <cm-symbol-reader></cm-symbol-reader>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<cm-notifier-dir></cm-notifier-dir>
+<cm-page-loader></cm-page-loader>
+{% endblock %}
+
+{% block page_scripts %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/symbol-reader.module.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/notifier.module.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/page-loader.module.js') }}"></script>
+
+<script>
+    (function(w, d) {
+        'use strict';
+        angular.module('symbolReaderApp', [
+            'symbolReaderModule',
+            'Notifier',
+            'Loader'
+        ]);
+
+        angular.element(function() {
+            angular.bootstrap(document, ['symbolReaderApp']);
+        });
+    })(window, document);
+</script>
+{% endblock %}
